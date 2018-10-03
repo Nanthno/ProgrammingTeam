@@ -1,0 +1,40 @@
+import java.util.Scanner;
+import java.util.HashMap;
+import java.util.ArrayList;
+
+class Rockclimbing {
+    Scanner scanner = new Scanner(System.in);
+
+    ArrayList<position> negatives = new ArrayList<position>();
+    HashMap<position, int> wall = new HashMap<position, int>();
+    
+    int height = scanner.nextInt();
+    int width = scanner.nextInt();
+    scanner.nextLine(); // skips line with all 'E's
+    for(int i = 0; i < height; i++;) {
+	String line = scanner.nextLine();
+	String[] a = line.split(" ");
+	for(int j = 0; j < width; j++) {
+	    int v = Integer.valueOf(a);
+	    position p = new position(j, i);
+	    wall.put(p, v);
+	    if(v < 0) {
+		negatives.add(p);
+	    }
+	}
+    }
+
+    System.out.println(wall.toString());
+	
+
+    class position {
+	int x;
+	int y;
+	private position(int a, int b){
+	    x = a;
+	    y = b;
+	}
+    }
+	       
+	
+	   
